@@ -1,0 +1,32 @@
+﻿<Window x:Class="RestaurantProgram.View.BusketView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantProgram.View"
+        mc:Ignorable="d"
+        Title="BusketView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Корзина" FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="10" />
+
+        <!-- Список блюд -->
+
+        <!-- Кнопки управления -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="10">
+            <Button Name="SelectButton" Content="Заказать" Width="100" Margin="5" 
+                    Background="#FF4CAF50" Foreground="White" FontWeight="Bold" 
+                   />
+            <Button Name="CancelButton" Content="Отмена" Width="100" Margin="5" 
+                    Background="#FFf44336" Foreground="White" FontWeight="Bold" 
+                    />
+        </StackPanel>
+    </Grid>
+</Window>

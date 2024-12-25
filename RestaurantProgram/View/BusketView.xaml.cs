@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace RestaurantProgram.View
 {
     /// <summary>
-    /// Логика взаимодействия для AuthorizationView.xaml
+    /// Логика взаимодействия для BusketView.xaml
     /// </summary>
-    public partial class AuthorizationView : Window
+    public partial class BusketView : Window
     {
-        public AuthorizationView()
+        public BusketView()
         {
             InitializeComponent();
         }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RestaurantProgram.ViewModel
 {
-    internal class AuthorizationViewModel
+    internal class MenuViewModel:BaseViewModel
     {
+
     }
 }

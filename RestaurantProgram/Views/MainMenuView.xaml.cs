@@ -18,10 +18,11 @@ namespace RestaurantProgram
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainMenuWindowView : Window
     {
-        public MainWindow()
+        public MainMenuWindowView()
         {
+           
             var viewModel = new MenuViewModel();
             viewModel.LoadMenuNames(); // Загружаем названия меню
             this.DataContext = viewModel; // Устанавливаем DataContext

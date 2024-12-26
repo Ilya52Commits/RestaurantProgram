@@ -25,6 +25,7 @@ namespace RestaurantProgram.ViewModel
         public MenuViewModel()
         {
             MenuNames = new ObservableCollection<string>();
+            LoadMenuNames();
         }
 
         public void LoadMenuNames()
@@ -32,7 +33,7 @@ namespace RestaurantProgram.ViewModel
             using (var context = new DBContext())
             {
                 var menuNames = context.Menus.Select(m => m.Name).ToList();
-                MenuNames.Clear(); 
+               
                 foreach (var name in menuNames)
                 {
                     MenuNames.Add(name); 

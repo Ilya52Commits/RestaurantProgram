@@ -6,7 +6,7 @@ internal class DBContext : Microsoft.EntityFrameworkCore.DbContext
 {
     // строка подключения к базе данных
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        optionsBuilder.UseSqlServer(@"Server=DESKTOP-34SGMAN\LOCALDB;Database=RestaurantProgramDB;Trusted_Connection=True;TrustServerCertificate=True;");
+        optionsBuilder.UseSqlServer(@"Server=DESKTOP-MGTPBOP;Database=RestaurantProgramDB;Trusted_Connection=True;TrustServerCertificate=True;");
 
     #region Объекты базы данных
     public DbSet<Product> Products { get; set; }

@@ -4,14 +4,14 @@ namespace RestaurantProgram.Models;
 
 internal class DBContext : Microsoft.EntityFrameworkCore.DbContext
 {
-    // строка подключения к базе данных
+    /* Строка подключения к базе данных SQL Server */
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
         optionsBuilder.UseSqlServer(@"Server=DESKTOP-34SGMAN\LOCALDB;Database=RestaurantProgramDB;Trusted_Connection=True;TrustServerCertificate=True;");
 
     #region Объекты базы данных
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Combo> Combos { get; set; }
-    public DbSet<ChooseProduct> Choices { get; set; }
-    public DbSet<Menu> Menus { get; set; }
+    public DbSet<Product> Products { get; set; }        // Объект таблицы продукта
+    public DbSet<Combo> Combos { get; set; }            // Объект таблицы комбо
+    public DbSet<ChooseProduct> Choices { get; set; }   // Объект таблицы выбранных продуктов
+    public DbSet<Menu> Menus { get; set; }              // Объект таблицы меню
     #endregion
 }

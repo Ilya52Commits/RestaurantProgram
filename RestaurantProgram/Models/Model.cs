@@ -8,7 +8,7 @@ public class Product
     public int Id { get; set; }             // primary key
     public string Name { get; set; }        // название продукта 
     public string Description { get; set; } // описание продукта
-    public string Сomposition { get; set; } // состав продукта
+    public string? Сomposition { get; set; } // состав продукта
     public string Type { get; set; }        // тип продукта
     public decimal Price { get; set; }      // цена продукта
 }
@@ -40,5 +40,5 @@ public class Menu
     public int Id { get; set; }                         // primary key
     public string Name { get; set; }                    // название меню
     public ICollection<Product> Prods { get; set; }     // коллекция продуктов
-    public ICollection<Combo> Combos { get; set; }      // коллекция комбо продуктов
+    public ICollection<Combo>? Combos { get; set; }     // коллекция комбо продуктов
 }

@@ -8,5 +8,7 @@ namespace RestaurantProgram.Command
 {
     internal class RealCommand
     {
+
+
     }
 }

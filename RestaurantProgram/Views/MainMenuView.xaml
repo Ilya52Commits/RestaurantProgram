@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RestaurantProgram"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Главное меню" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="*"/>
+            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Главное меню" HorizontalAlignment="Center" FontSize="35" />
+        <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding MenuNames}" 
+                 HorizontalAlignment="Center" VerticalAlignment="Center" 
+                 Width="300" Height="200" FontSize="20" 
+                 Margin="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding }" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

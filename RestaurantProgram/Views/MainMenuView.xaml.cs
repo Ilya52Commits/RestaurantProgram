@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantProgram.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace RestaurantProgram
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MenuViewModel(); // Установка контекста данных
+            ((MenuViewModel)DataContext).LoadMenuNames();
         }
     }
 }

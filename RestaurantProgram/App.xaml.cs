@@ -18,6 +18,7 @@ public partial class App : Application
     /// <param name="e"></param>
     protected override void OnStartup(StartupEventArgs e)
     {
+       
         var isProductExist = _dbContext.Products.Any();
 
         if (!isProductExist)

@@ -22,9 +22,9 @@ namespace RestaurantProgram
     {
         public MainWindow()
         {
-            InitializeComponent();
-            DataContext = new MenuViewModel(); // Установка контекста данных
-            ((MenuViewModel)DataContext).LoadMenuNames();
+            var viewModel = new MenuViewModel();
+            viewModel.LoadMenuNames(); // Загружаем названия меню
+            this.DataContext = viewModel; // Устанавливаем DataContext
         }
     }
 }

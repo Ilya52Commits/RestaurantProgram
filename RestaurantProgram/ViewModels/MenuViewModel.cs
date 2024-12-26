@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,8 @@ namespace RestaurantProgram.ViewModel
     {
 
 
-        public List<string> MenuNames { get; set; }
+
+        public ObservableCollection<string> MenuNames { get; set; }
 
         #region Свойства
 
@@ -19,16 +21,22 @@ namespace RestaurantProgram.ViewModel
 
         #region Методы
 
+
         public MenuViewModel()
         {
-            MenuNames = new List<string>();
+            MenuNames = new ObservableCollection<string>();
         }
 
         public void LoadMenuNames()
         {
             using (var context = new DBContext())
             {
-                MenuNames = context.Menus.Select(m => m.Name).ToList();
+                var menuNames = context.Menus.Select(m => m.Name).ToList();
+                MenuNames.Clear(); 
+                foreach (var name in menuNames)
+                {
+                    MenuNames.Add(name); 
+                }
             }
         }
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RestaurantProgram" 
         xmlns:ViewModel="clr-namespace:RestaurantProgram.ViewModel"
         mc:Ignorable="d"
-        Title="MainMenu" Height="450" Width="800">
+        Title="MainMenu" Height="1080" Width="720">
     <Window.DataContext>
         <ViewModel:MenuViewModel/>
     </Window.DataContext>
@@ -16,18 +16,25 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
 
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Главное меню" HorizontalAlignment="Center" FontSize="35" />
+        <TextBlock Grid.Row="0" Text="Главное меню" HorizontalAlignment="Center" FontSize="35" Panel.ZIndex="2" />
+        <Image Source="C:\Users\Denis\Source\Repos\RestaurantProgram\RestaurantProgram\Resours\map.png" Grid.Row="0" Height="500" Width="700"   Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" />
+
         <ListView ItemsSource="{Binding Menues}" 
               HorizontalAlignment="Center" VerticalAlignment="Center" 
-              Width="750" Height="300" FontSize="20">
+              Width="1080" Height="600" FontSize="20"  Grid.Row="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" />
                         <ListView ItemsSource="{Binding Prods}" 
                                 HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                Width="650"  FontSize="20" 
+                                Width="1080"  FontSize="20" 
                                 Margin="10">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -36,7 +43,7 @@
                             </ListBox.ItemsPanel>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Width="150">
+                                    <StackPanel Width="250">
                                         <TextBlock Text="{Binding Name}" />
                                         <TextBlock Text="{Binding Price}"/>
                                         <Button Content="Закзать"/>

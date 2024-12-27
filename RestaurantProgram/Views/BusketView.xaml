@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RestaurantProgram.View"
         mc:Ignorable="d"
+        x:Name="Busket"
         Title="BusketView" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,18 +15,35 @@
         </Grid.RowDefinitions>
 
         <!-- Заголовок -->
-        <TextBlock Text="Корзина" FontSize="24" FontWeight="Bold" 
+        <StackPanel>
+            <TextBlock Text="Корзина" FontSize="24" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="10" />
+            <Button Command="{Binding NavigationToMainMenuView}" Width="100" Content="Назад"/>
+        </StackPanel>
+        
 
         <!-- Список блюд -->
-
-        <!-- Кнопки управления -->
+        <ListView Grid.Row="1" ItemsSource="{Binding SelectProducts}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="25" Text="{Binding Name}"/>
+                        <TextBlock Margin="10" FontSize="25" Text="{Binding Price}"/>
+                        <Button Command="{Binding DataContext.RemoveProductCommand, ElementName=Busket}" CommandParameter="{Binding}" Content="Удалить"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            <!-- Кнопки управления -->
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="10">
+            <TextBlock Text="{Binding Price, StringFormat='Цена: {0} руб.'}" FontSize="20" Margin="20"/>
             <Button Name="SelectButton" Content="Заказать" Width="100" Margin="5" 
                     Background="#FF4CAF50" Foreground="White" FontWeight="Bold" 
+                    Command="{Binding OrderCommand}"
                    />
             <Button Name="CancelButton" Content="Отмена" Width="100" Margin="5" 
                     Background="#FFf44336" Foreground="White" FontWeight="Bold" 
+                    Command="{Binding RemoveCommand}"
                     />
         </StackPanel>
     </Grid>

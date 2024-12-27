@@ -10,8 +10,6 @@ internal class DBContext : Microsoft.EntityFrameworkCore.DbContext
 
     #region Объекты базы данных
     public DbSet<Product> Products { get; set; }        // Объект таблицы продукта
-    public DbSet<Combo> Combos { get; set; }            // Объект таблицы комбо
-    public DbSet<ChooseProduct> Choices { get; set; }   // Объект таблицы выбранных продуктов
     public DbSet<Menu> Menus { get; set; }              // Объект таблицы меню
     #endregion
 }

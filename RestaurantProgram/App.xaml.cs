@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using RestaurantProgram.Models;
 using System.Windows;
@@ -18,16 +19,44 @@ public partial class App : Application
     /// </summary>
     private void AddProductOnjects()
     {
+        var isMenuExist = _dbContext.Menus.Any();
         var isProductExist = _dbContext.Products.Any();
 
-        if (!isProductExist)
+        if (!isProductExist && !isMenuExist)
         {
+            Menu burgerMenu = new Menu
+            {
+                Name = "Бургеры",
+                Prods = new List<Product>(),
+            };
+
+            Menu rollMenu = new Menu
+            {
+                Name = "Роллы",
+                Prods = new List<Product>(),
+            };
+
+            Menu frenchMenu = new Menu
+            {
+                Name = "Картофель",
+                Prods = new List<Product>(),
+            };
+
+            Menu drinkMenu = new Menu
+            {
+                Name = "Напитки",
+                Prods = new List<Product>(),
+            };
+
+            _dbContext.Menus.AddRange(burgerMenu, rollMenu, frenchMenu, drinkMenu);
+            _dbContext.SaveChanges();
+
             Product firstBurgerObject = new Product
             {
                 Name = "Маэстро бургер оригинальный",
                 Description = "Для настоящих ценителей представляем - маэстро бургер оригенальный.",
                 Сomposition = "Улочка бриошь, Филе куриное оригинальное, Соус Бургер классический, Сыр плавленый ломтевой, Огурцы маринованные, Салат айсберг.",
-                Type = "Бургер",
+                MenuId = burgerMenu.Id, 
                 Price = 239
             };
 
@@ -36,7 +65,7 @@ public partial class App : Application
                 Name = "Маэстро бургер острый",
                 Description = "Простая рецептура, продуманная до мелочей – для создания неповторимого вкуса премиального куриного бургера.",
                 Сomposition = "Булочка бриошь, Соус Бургер классический, Сыр плавленый ломтевой, Огурцы маринованные, Салат айсберг, Филе куриное острое.",
-                Type = "Бургер",
+                MenuId = burgerMenu.Id,
                 Price = 239
             };
 
@@ -45,7 +74,7 @@ public partial class App : Application
                 Name = "Шефбургер оригенальный",
                 Description = "В составе оригинального Шефбургера есть всё, чтобы вкусно и сытно перекусить. Нежная и сочная курица — главный ингредиент.",
                 Сomposition = "Булочка с кунжутом, Филе Куриное оригинальное, Соус Цезарь, Томаты свежие, Салат Айсберг.",
-                Type = "Бургер",
+                MenuId = burgerMenu.Id,
                 Price = 179
             };
 
@@ -54,7 +83,7 @@ public partial class App : Application
                 Name = "Шефбургер острый",
                 Description = "Состав острого Шефбургера прост и в меру наполнен любимыми ингредиентами.",
                 Сomposition = "Филе куриное острое, Булочка с кунжутом, Соус Бургер, Салат Айсберг, Огурцы маринованные, Лук репчатый.",
-                Type = "Бургер",
+                MenuId = burgerMenu.Id,
                 Price = 179
             };
 
@@ -65,7 +94,7 @@ public partial class App : Application
                 Name = "Ростмастер острый",
                 Description = "Нужно взбодриться и долго оставаться сытым? Попробуйте Ростмастер острый, состав которого еще и необычайно вкусен!",
                 Сomposition = "Тортилья пшеничная, Филе куриное острое, Томаты свежие, Салат Айсберг, Сыр плавленый ломтевой, Картофель по-деревенски, Соус майонезный.",
-                Type = "Ролл",
+                MenuId = rollMenu.Id,
                 Price = 269
             };
 
@@ -74,7 +103,7 @@ public partial class App : Application
                 Name = "Ростмастер оригинальный",
                 Description = "Невероятно вкусный и сытный Ростмастер оригинальный ждет тебя. Энергетическая ценность Ростмастера оригинального впечатляет!",
                 Сomposition = "Тортилья пшеничная, Филе куриное оригинальное, Томаты свежие, Салат Айсберг, Сыр плавленый ломтевой, Картофель по-деревенски, Соус майонезный.",
-                Type = "Ролл",
+                MenuId = rollMenu.Id,
                 Price = 269
             };
 
@@ -85,7 +114,7 @@ public partial class App : Application
                 Name = "Картофель фри",
                 Description = "Закажите Картофель фри по вкусной цене! У нас он именно такой, каким любят его во всем мире — мягкий, рассыпчатый внутри и аппетитно хрустящий снаружи.",
                 Сomposition = "Картофель фри (Картофель фри, масло растительное), Соль поваренная пищевая.",
-                Type = "Картофель",
+                MenuId = frenchMenu.Id,
                 Price = 77
             };
 
@@ -94,7 +123,7 @@ public partial class App : Application
                 Name = "Картофель по-деревенски",
                 Description = "Никто не готовит Картофель по-деревенски так, как делают это у нас!",
                 Сomposition = "Картофель по-деревенски, Масло растительное.",
-                Type = "Картофель",
+                MenuId = frenchMenu.Id,
                 Price = 82
             };
 
@@ -105,7 +134,7 @@ public partial class App : Application
                 Name = "Эвервесс Кола",
                 Description = "И снова с нами! Любимый напиток, который идеально подходит к хрустящей курочке.",
                 Сomposition = null,
-                Type = "Напиток",
+                MenuId = drinkMenu.Id,
                 Price = 129
             };
 
@@ -114,7 +143,7 @@ public partial class App : Application
                 Name = "Фрустайл Апельсин",
                 Description = "Лимонад Фрустайл Апельсин - удовольствие с первого глотка!",
                 Сomposition = null,
-                Type = "Напиток",
+                MenuId = drinkMenu.Id,
                 Price = 129
             };
 
@@ -122,56 +151,7 @@ public partial class App : Application
             _dbContext.SaveChanges();
         }
     }
-
-    /// <summary>
-    /// Метод добавления сущностей для таблицы Cimbo
-    /// </summary>
-    private void AddComboOnjects()
-    {
-       
-    }
-
-    /// <summary>
-    /// Метод добавления сущностей для таблицы Menu
-    /// </summary>
-    private void AddMenuObjects()
-    {
-        var isMenuExist = _dbContext.Menus.Any();
-
-        if (!isMenuExist) 
-        {
-            Menu burgerMenu = new Menu
-            {
-                Name = "Бургеры",
-                Prods = _dbContext.Products.Where(p => p.Type == "Бургер").ToList(),
-                Combos = null
-            };
-
-            Menu rollMenu = new Menu
-            {
-                Name = "Бургеры",
-                Prods = _dbContext.Products.Where(p => p.Type == "Ролл").ToList(),
-                Combos = null
-            };
-
-            Menu frenchMenu = new Menu
-            {
-                Name = "Картофель",
-                Prods = _dbContext.Products.Where(p => p.Type == "Картофель").ToList(),
-                Combos = null
-            };
-
-            Menu drinkMenu = new Menu
-            {
-                Name = "Напитки",
-                Prods = _dbContext.Products.Where(p => p.Type == "Напиток").ToList(),
-                Combos = null
-            };
-
-            _dbContext.Menus.AddRange(burgerMenu, rollMenu, frenchMenu, drinkMenu);
-            _dbContext.SaveChanges();
-        }
-    }
+  
 
     /// <summary>
     /// Виртуальный метод для логики перед запуском программы
@@ -183,7 +163,6 @@ public partial class App : Application
             _dbContext.Database.EnsureCreated();
 
         AddProductOnjects();
-        AddMenuObjects();
 
 
         /* Вызов логики виртульного класса */

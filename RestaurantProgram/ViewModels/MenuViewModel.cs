@@ -15,7 +15,15 @@ internal class MenuViewModel : BaseViewModel
     private List<Product> _selectedProducts { get; set; }
 
     public RelayCommand<Product> AddToBascketCommand { get; set; } 
-    public RelayCommand NavigateToBusketViewCommand { get; set; }    
+    public RelayCommand NavigateToBusketViewCommand { get; set; }
+
+    private WindowState _windowState;
+
+    public WindowState WindowState
+    {
+        get => _windowState;
+        set => Set(ref _windowState, value);
+    }
     #endregion
 
     #region Конструкторы
@@ -24,6 +32,7 @@ internal class MenuViewModel : BaseViewModel
         _dbContext = new DBContext();   
         Menues = new ObservableCollection<Menu>(_dbContext.Menus.Include(menu => menu.Prods));
         _selectedProducts = new List<Product>();
+        WindowState = WindowState.Maximized; // Окно будет открываться в максимизированном состоянии
 
         AddToBascketCommand = new RelayCommand<Product>(AddToBascketCommandExecute);
         NavigateToBusketViewCommand = new RelayCommand(NavigateToBusketViewCommandExecute);

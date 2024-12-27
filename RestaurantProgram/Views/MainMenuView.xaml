@@ -7,7 +7,8 @@
         xmlns:ViewModel="clr-namespace:RestaurantProgram.ViewModel"
         mc:Ignorable="d"
         x:Name="MainMenu"
-        Title="MainMenu" Height="1080" Width="720">
+        Title="MainMenu" Height="1080" Width="720"
+        WindowState="{Binding WindowState, Mode=TwoWay}">
     <Window.DataContext>
         <ViewModel:MenuViewModel/>
     </Window.DataContext>

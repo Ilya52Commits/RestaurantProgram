@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
 using RestaurantProgram.Models;
+using RestaurantProgram.View;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace RestaurantProgram.ViewModel;
 internal class MenuViewModel : BaseViewModel
@@ -13,6 +15,7 @@ internal class MenuViewModel : BaseViewModel
     private List<Product> _selectedProducts { get; set; }
 
     public RelayCommand<Product> AddToBascketCommand { get; set; } 
+    public RelayCommand NavigateToBusketViewCommand { get; set; }    
     #endregion
 
     #region Конструкторы
@@ -22,18 +25,39 @@ internal class MenuViewModel : BaseViewModel
         Menues = new ObservableCollection<Menu>(_dbContext.Menus.Include(menu => menu.Prods));
         _selectedProducts = new List<Product>();
 
-        AddToBascketCommand = new RelayCommand<Product>(AddToBascketCommandExecute); 
+        AddToBascketCommand = new RelayCommand<Product>(AddToBascketCommandExecute);
+        NavigateToBusketViewCommand = new RelayCommand(NavigateToBusketViewCommandExecute);
     }
+
+    public MenuViewModel(List<Product> selectedProducts)
+    {
+        _dbContext = new DBContext();
+        Menues = new ObservableCollection<Menu>(_dbContext.Menus.Include(menu => menu.Prods));
+        _selectedProducts = selectedProducts;
+
+        AddToBascketCommand = new RelayCommand<Product>(AddToBascketCommandExecute);
+        NavigateToBusketViewCommand = new RelayCommand(NavigateToBusketViewCommandExecute);
+
+    }   
     #endregion
 
     #region Методы
+    
+    #endregion
+
+    #region События
     public void AddToBascketCommandExecute(Product product)
     {
         _selectedProducts.Add(product);
     }
-    #endregion
 
-    #region События
+    public void NavigateToBusketViewCommandExecute()
+    {
+        var busketWindow = new BusketView(_selectedProducts);
+        var openWindows = Application.Current.Windows.OfType<MainMenuView>();
 
+        busketWindow.Show();
+        openWindows.FirstOrDefault()?.Close(); // Закрываем все открытые окна типа BusketView
+    }
     #endregion
 }

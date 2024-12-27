@@ -1,15 +1,25 @@
-﻿using System.Windows;
+﻿using RestaurantProgram.Models;
+using RestaurantProgram.ViewModel;
+using System.Windows;
 
-namespace RestaurantProgram
+namespace RestaurantProgram.View
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainMenuView : Window
     {
-        public MainWindow()
+        public MainMenuView()
         {
             InitializeComponent();
+        }
+
+        public MainMenuView(List<Product> products) 
+        {
+            InitializeComponent();
+
+            /* Привязка объекта ViewModel к контексту данных */
+            DataContext = new MenuViewModel(products);
         }
     }
 }

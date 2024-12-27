@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:RestaurantProgram" 
         xmlns:ViewModel="clr-namespace:RestaurantProgram.ViewModel"
         mc:Ignorable="d"
+        x:Name="MainMenu"
         Title="MainMenu" Height="1080" Width="720">
     <Window.DataContext>
         <ViewModel:MenuViewModel/>
@@ -46,7 +47,8 @@
                                     <StackPanel Width="250">
                                         <TextBlock Text="{Binding Name}" />
                                         <TextBlock Text="{Binding Price}"/>
-                                        <Button Content="Закзать"/>
+                                        <Button Command="{Binding DataContext.AddToBascketCommand, ElementName=MainMenu}"
+                                                CommandParameter="{Binding}" Content="Закзать"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

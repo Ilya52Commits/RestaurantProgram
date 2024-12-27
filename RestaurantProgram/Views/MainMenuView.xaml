@@ -24,7 +24,7 @@
 
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Background="AliceBlue" Text="Главное меню" HorizontalAlignment="Center" FontSize="35" Panel.ZIndex="2" Height="50"  VerticalAlignment="Top"/>
-        <Image Source="C:\Users\Denis\Source\Repos\RestaurantProgram\RestaurantProgram\Resours\map.png" Grid.Row="0" Height="500" Width="700"   Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Image Source="E:\RestaurantProgram\RestaurantProgram\Resours\map.png" Grid.Row="0" Height="500" Width="700"   Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" />
 
         <ListView ItemsSource="{Binding Menues}" 
               HorizontalAlignment="Center" VerticalAlignment="Center" 

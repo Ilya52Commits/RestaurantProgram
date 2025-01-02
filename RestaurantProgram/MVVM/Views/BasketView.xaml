@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:viewModels="clr-namespace:RestaurantProgram.MVVM.ViewModels"
       mc:Ignorable="d"
+      x:Name="Basket"
       Title="BasketView">
     <Page.DataContext>
         <viewModels:BasketViewModel/>
@@ -30,7 +31,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="10" FontSize="25" Text="{Binding Name}"/>
                         <TextBlock Margin="10" FontSize="25" Text="{Binding Price}"/>
-                        <Button Command="{Binding DataContext.RemoveProductCommand, ElementName=Busket}" CommandParameter="{Binding}" Content="Удалить"/>
+                        <Button Command="{Binding DataContext.RemoveProductCommand, ElementName=Basket}" CommandParameter="{Binding}" Content="Удалить"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

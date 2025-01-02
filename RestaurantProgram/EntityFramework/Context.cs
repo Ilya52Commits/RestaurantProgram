@@ -16,13 +16,16 @@ internal sealed class Context : DbContext
     #endregion
 
     /* Конструктор */
-    public Context() => Database.EnsureCreated();
+    public Context()
+    {
+        Database.EnsureCreated();
+    }
 
     /* Строка подключения к MS SQL */
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        optionsBuilder.UseLazyLoadingProxies()
-            .UseSqlServer(
-                @"Server=DESKTOP-34SGMAN\LOCALDB;Database=RestaurantProgramDB;Trusted_Connection=True;TrustServerCertificate=True;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+       optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Server=DESKTOP-34SGMAN\LOCALDB;Database=RestaurantProgramDB;Trusted_Connection=True;TrustServerCertificate=True;");
+    }
 
     /// <summary>
     /// Метод добавления моделей

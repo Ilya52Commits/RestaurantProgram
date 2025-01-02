@@ -1,6 +1,7 @@
 namespace RestaurantProgram.Repositories;
 
-public interface IRepository
+internal interface IRepository<T> : IDisposable
+    where T : class
 {
-    
+
 }

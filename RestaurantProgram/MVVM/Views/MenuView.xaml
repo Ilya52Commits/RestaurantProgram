@@ -1,31 +1,27 @@
-﻿<Window x:Class="RestaurantProgram.View.MainMenuView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RestaurantProgram.View"
-        xmlns:ViewModel="clr-namespace:RestaurantProgram.ViewModel"
-        mc:Ignorable="d"
-        x:Name="MainMenu"
-        Title="MainMenu" Height="1080" Width="720"
-        WindowState="{Binding WindowState, Mode=TwoWay}">
-    <Window.DataContext>
-        <ViewModel:MenuViewModel/>
-    </Window.DataContext>
+<Page x:Class="RestaurantProgram.MVVM.Views.MenuView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:viewModels="clr-namespace:RestaurantProgram.MVVM.ViewModels"
+      mc:Ignorable="d"
+      x:Name="Menu"
+      Title="MenuView">
+    <Page.DataContext>
+        <viewModels:MenuViewModel/>
+    </Page.DataContext>
     <Grid>
-        <Grid.ColumnDefinitions>
-
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
 
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition />
 
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Background="AliceBlue" Text="Главное меню" HorizontalAlignment="Center" FontSize="35" Panel.ZIndex="2" Height="50"  VerticalAlignment="Top"/>
-        <Image Source="E:\RestaurantProgram\RestaurantProgram\Resours\map.png" Grid.Row="0" Height="500" Width="700"   Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Image Source="E:\RestaurantProgram\RestaurantProgram\Resources\map.png" Grid.Row="0" Height="500" Width="700"   Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" />
 
         <ListView ItemsSource="{Binding Menues}" 
               HorizontalAlignment="Center" VerticalAlignment="Center" 
@@ -48,8 +44,8 @@
                                     <StackPanel Width="250">
                                         <TextBlock Text="{Binding Name}" />
                                         <TextBlock Text="{Binding Price}"/>
-                                        <Button Command="{Binding DataContext.AddToBascketCommand, ElementName=MainMenu}"
-                                                CommandParameter="{Binding}" Content="Закзать"/>
+                                        <Button Command="{Binding DataContext.AddToBasketCommand, ElementName=Menu}"
+                                                CommandParameter="{Binding}" Background="Red" Content="Закзать"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -58,6 +54,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button  Command="{Binding NavigateToBusketViewCommand}" Grid.Row="4" Content="Перейти в корзину" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="100" Width="130" />
+        <Button Command="{Binding NavigateToBuketViewCommand}" Grid.Row="3" Content="Перейти в корзину" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="100" Width="130" />
     </Grid>
-</Window>
+</Page>

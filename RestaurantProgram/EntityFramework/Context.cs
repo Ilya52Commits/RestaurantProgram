@@ -22,7 +22,7 @@ public sealed class Context : DbContext
     /* Строка подключения к MS SQL */
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-       optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Server=DESKTOP-34SGMAN\LOCALDB;Database=RestaurantProgramDB;Trusted_Connection=True;TrustServerCertificate=True;");
+       optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Server=DESKTOP-MGTPBOP;Database=RestaurantProgramDB;Trusted_Connection=True;TrustServerCertificate=True;");
     }
 
     /// <summary>

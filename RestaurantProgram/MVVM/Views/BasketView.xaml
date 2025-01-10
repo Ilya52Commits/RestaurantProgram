@@ -31,7 +31,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="10" FontSize="25" Text="{Binding Name}"/>
                         <TextBlock Margin="10" FontSize="25" Text="{Binding Price}"/>
-                        <Button Command="{Binding DataContext.RemoveProductCommand, ElementName=Basket}" CommandParameter="{Binding}" Content="Удалить"/>
+                        <Button Command="{Binding DataContext.RemoveProductCommand, ElementName=Basket}" Background="Red" CommandParameter="{Binding}" Content="Удалить"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -6,7 +6,7 @@ namespace RestaurantProgram.EntityFramework;
 /// <summary>
 /// Контекст подключения и создания базы данных, а также наполнения базы начальными данными
 /// </summary>
-internal sealed class Context : DbContext
+public sealed class Context : DbContext
 {
     #region Объекты базы данных
 
@@ -16,10 +16,8 @@ internal sealed class Context : DbContext
     #endregion
 
     /* Конструктор */
-    public Context()
-    {
-        Database.EnsureCreated();
-    }
+    public Context() => Database.EnsureCreated();
+
 
     /* Строка подключения к MS SQL */
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,7 +45,7 @@ internal sealed class Context : DbContext
         var firstBurgerObject = new Product
         {
             Id = 1, Name = "Маэстро бургер оригинальный",
-            Description = "Для настоящих ценителей представляем - маэстро бургер оригенальный.",
+            Description = "Для настоящих ценителей представляем - маэстро бургер оригинальный.",
             Сomposition =
                 "Улочка бриошь, Филе куриное оригинальное, Соус Бургер классический, Сыр плавленый ломтевой, Огурцы маринованные, Салат айсберг.",
             MenuId = burgerMenu.Id, Price = 239
@@ -65,7 +63,7 @@ internal sealed class Context : DbContext
 
         var thirdBurgerObject = new Product
         {
-            Id = 3, Name = "Шефбургер оригенальный",
+            Id = 3, Name = "Шефбургер оригинальный",
             Description =
                 "В составе оригинального Шефбургера есть всё, чтобы вкусно и сытно перекусить. Нежная и сочная курица — главный ингредиент.",
             Сomposition = "Булочка с кунжутом, Филе Куриное оригинальное, Соус Цезарь, Томаты свежие, Салат Айсберг.",
